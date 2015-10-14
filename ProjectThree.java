@@ -1,12 +1,30 @@
 import javax.swing.JOptionPane;
-
+/**
+ * 
+ * @author colin_000
+ *SET Variables
+ *LOOP for whether try is less or equal to limit 
+ *PROMPT User for Username
+ *CHECK if Username is equal to on of the items in Username Array
+ *IF not Try++
+ *INIT Index to keep track of which part of the array was inputted 
+ *PROMPT for password
+ *Check if password is equal to index
+ *IF not Try++
+ *PROPMT for AccountType
+ *CHECK index again
+ *IF not re-prompt user for Account Type
+ */
 public class ProjectThree {
+/**
+ * 
+ * @param args
+ */
+	public static void main(String[] args) { 
 
-	public static void main(String[] args) {
 
-
-		boolean LoopTwo = true;
-		boolean PassBool = true;
+		boolean UserBool = false;
+		boolean PassBool = false;
 		String Username = "";
 		String Password = ""; 
 		String[] SetUser = {"User1","User2","User3"};
@@ -18,76 +36,86 @@ public class ProjectThree {
 
 		String[] AccChoice = { "Admin", "Staff", "Student"};
 
-		boolean Loop = true;//Purely used to set up loop 
-		while(Loop == true ){
-			LoopTwo = true;
-			PassBool = true;
-			UserData = 0;
+		boolean Loop = false;//Purely used to set up loop 
+		while(Loop == false ){
+			//UserBool = true;
+			//PassBool = true;
 
 			if(Try > Limit){
 				JOptionPane.showMessageDialog(null, "User Locked Out! Please contact Administrator.", "//"
 						+ "User Timed Out", JOptionPane.WARNING_MESSAGE);//WARNING_MESSAGE creates "indicator"
-				System.out.println("b");
 				Loop = false; //end loop
 				System.exit(0);}
 
 			if (Try < Limit){
 				//Once Try is greater than Limit, User is locked out.
-				LoopTwo = true;
-				PassBool = true;
-				UserData = 0;
-				Username = JOptionPane.showInputDialog("Please Enter Username: ");
+
+				if (UserBool != true){
+					UserData = 0;//UserData keeps track of which part of the array is input
+					Username = JOptionPane.showInputDialog("Please Enter Username: ");}
 
 
-				while((LoopTwo == true) && (UserData < 2)){
-					if((Username.equals(SetUser[UserData]))){
-						LoopTwo = false;}
-					else{ 
-						UserData ++ ;
-						System.out.println("a");}
+				while((UserBool == false) && (UserData <= 2)){ //If Loop is set to false and Password corresponds with Username index
+					if((Username.equals(SetUser[UserData])) && UserBool == false){
+						UserBool = true;}
+
+					else{
+						UserData ++ ;}
 				}
-				Password = JOptionPane.showInputDialog("Please Enter Password: ");
-				if((Password.equals(SetPass[UserData]))){
-					PassBool = false;
-					System.out.println("c");}
+
+
+				if(UserBool == true){
+					Password = JOptionPane.showInputDialog("Please Enter Password: ");
+					if(Password.equals(SetPass[UserData])){
+						PassBool = true;}
+
+					else{
+						PassBool = false;
+						JOptionPane.showMessageDialog(null, "Incorrect password!", "//"
+								+ "INVALID", JOptionPane.WARNING_MESSAGE);}
+					}
+				
 				else{
-					PassBool = true;}
+					JOptionPane.showMessageDialog(null, "Incorrect user name!", "//"
+							+ "INVALID", JOptionPane.WARNING_MESSAGE);}
 			}
-			if((Try<Limit) && (LoopTwo == false) && (PassBool == false)){
+
+
+			if((Try<Limit) && (UserBool == true) && (PassBool == true)){
+				
 				String input = (String) JOptionPane.showInputDialog(null, "Choose account type:  ","Account Type",JOptionPane.QUESTION_MESSAGE, null,AccChoice,AccChoice[0]); 
 				System.out.println(input);
-
-				switch(input){ 
+				
+				while(input != AccChoice[UserData]){
+					
+					JOptionPane.showMessageDialog(null, "Wrong Account Choice.", "Invalid",//
+							JOptionPane.WARNING_MESSAGE);
+					input = (String) JOptionPane.showInputDialog(null, "Choose account type:  ","Account Type",JOptionPane.QUESTION_MESSAGE, null,AccChoice,AccChoice[0]); 
+					System.out.println(input);}//Reprompts User for Account Type rather than adding to the Try counter
+			
+				switch(input){
 				//If and only if the string is correct does the switch case work
 				case "Admin":
 					if(UserData == 0){
 						JOptionPane.showMessageDialog(null, "Welcome " +  "Admin, you can update and read file!");
-						Loop = false;}
-					else{ 
-						Try = Try +1;
-						JOptionPane.showMessageDialog(null, "Either Username or Password is incorrect.", "Invalid", JOptionPane.WARNING_MESSAGE);}
+						Loop =  true;}
 					break;
 				case "Staff":
 					if(UserData == 1){
-						JOptionPane.showMessageDialog(null, "Welcome " + "Staff, you can update, read, add, delete file.");
-						Loop = false;}
-					else{ 
-						Try = Try +1;
-						JOptionPane.showMessageDialog(null, "Either Username or Password is incorrect.", "Invalid", JOptionPane.WARNING_MESSAGE);}
+						JOptionPane.showMessageDialog(null, "Welcome " +  "Staff, you can update, edit, read, and delete file!");
+						Loop =  true;}
 					break;
 				case "Student":
 					if(UserData == 2){
 						JOptionPane.showMessageDialog(null, "Welcome " + "Student, you can only read file!");
-						Loop = false;}
-					else{ 
-						Try = Try +1;
-						JOptionPane.showMessageDialog(null, "Either Username or Password is incorrect.", "Invalid", JOptionPane.WARNING_MESSAGE);}
-					break;}	
+						Loop =  true;}
+					break;}
 			}
-			else{ 
-				Try = Try +1;
-				System.out.println("w");
-			}
+			else{
+				//Try counter for if password or username input is not correct
+				Try++;}
 		}
 	}
 }
+
+
