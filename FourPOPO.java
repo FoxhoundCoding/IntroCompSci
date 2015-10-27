@@ -13,48 +13,58 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class FourPointOnePartTwo extends Application {
+public class FourPointOnePartOne extends Application {
 
-	int Limit = 3;
-	int Try = 0;
-	
 	@Override
 	public void start(Stage primaryStage) {
-		primaryStage.setTitle("Four Point One Part Two");
+		primaryStage.setTitle("Four Point One Part One");
 		TextField UserTxt = new TextField();
 		TextField PassTxt = new TextField();
 		Label UserLabel = new Label("Username");
 		Label PassLabel = new Label("Password");
 		Button EnterBttn = new Button("Enter");
-		
-
 		EnterBttn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0){
 
+				int Index = 0;
 				String UserIn = "";
 				String PassIn = "";
-				String[] SetUser = {"UserOne"};
-				String[] SetPass = {"PassOne"};  
-
+				String AccIn = "";
+				String[] SetUser = {"UserOne", "UserTwo", "UserThree"};
+				String[] SetPass = {"PassOne", "PassThree", "PassThree"}; 
+				String[] SetAcc = {"Admin", "Student", "Staff"};
+				boolean Loop = false;
+				boolean AccLoop = false; 
 
 				UserIn = UserTxt.getText();
 				PassIn = PassTxt.getText();
 
-
-				if((UserIn.equals(SetUser[0])) && (PassIn.equals(SetPass[0]))){
-					JOptionPane.showMessageDialog(null, "Wecome " + UserIn);
-					System.exit(0);
+				while(Index < 3 && Loop == false)
+				{
+					if((UserIn.equals(SetUser[Index])) && (PassIn.equals(SetPass[Index]))){
+						JOptionPane.showMessageDialog(null, "Wecome " + UserIn);
+						Loop = true;
+					}
+					else{
+						Index++;
+					}
 				}
-				else{ 
+				if( Loop == true){
+					do{
+						AccIn = (String) JOptionPane.showInputDialog(null, "Choose account type:  ","Account Type",JOptionPane.QUESTION_MESSAGE, null,SetAcc, SetAcc[0]); 
+						System.out.println(AccIn);
+						if(AccIn.equals(SetAcc[Index])){
+							JOptionPane.showMessageDialog(null, "Wecome " + AccIn + ": " + UserIn + "!");
+							AccLoop = true;
+						}
+						else{
+							JOptionPane.showMessageDialog(null, "Incorrect Account Choice!", "Error", JOptionPane.WARNING_MESSAGE);
+						}
+					} while (AccLoop == false);
+				}
+				else{
 					JOptionPane.showMessageDialog(null, "Incorrect Username or Password!", "Error", JOptionPane.WARNING_MESSAGE);
-					Try++;
-
-				}
-
-				if (Try == Limit){
-					JOptionPane.showMessageDialog(null, "Please contact your adminstrator to unlock your account!", "Error", JOptionPane.WARNING_MESSAGE);
-					System.exit(0);
 				}
 			}
 		});
@@ -78,3 +88,4 @@ public class FourPointOnePartTwo extends Application {
 		launch(args);
 	}
 }
+
