@@ -1,0 +1,34 @@
+import java.awt.Graphics;
+
+import javax.swing.JApplet;
+/**
+ * 
+ * @author Creedon
+ *
+ */
+public class OnePointThree extends JApplet {
+
+	public void paint(Graphics canvas) {
+		
+		canvas.drawRect(500,500, 500, 500);
+		canvas.drawLine(60, 20, 60, 200);
+		canvas.drawLine(130, 20, 130, 200);
+		canvas.drawLine(0, 70, 190, 70);
+		canvas.drawLine(0, 140, 190, 140);
+		canvas.drawLine(10, 105, 190, 105);
+		canvas.drawLine(15, 80, 40, 130);
+		canvas.drawLine(15, 130, 40, 80);
+		canvas.drawLine(100, 130, 80, 80);
+		canvas.drawLine(70, 130, 100, 80);
+		canvas.drawLine(180, 130, 140, 80);
+		canvas.drawLine(140, 130, 180, 80);
+		canvas.drawOval(13, 20, 40, 40);
+		canvas.drawOval(13, 150, 40, 40);
+		canvas.drawOval(80, 20, 40, 40);
+		canvas.drawOval(145, 20, 40, 40);
+		canvas.drawOval(145, 150, 40, 40);
+		canvas.drawOval(80, 150, 40, 40);
+
+		
+	}
+}
