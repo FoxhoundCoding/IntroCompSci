@@ -1,0 +1,60 @@
+import javax.swing.JOptionPane;
+
+public class ProjectFourPointOne {
+	String Username ="";
+	String Password ="";
+	String AccountType ="";
+
+	ProjectFourPointOne(){
+		Username = "no input";
+		Password = "no input";
+		AccountType = "no input";
+	}
+
+	ProjectFourPointOne(String User, String Pass, String Acc){
+		Username = User;
+		Password = Pass;
+		AccountType = Acc;
+	}
+
+	public void getUsername(String Username){
+		this.Username = Username;
+	}
+	public String setUsername(String Username){
+		return Username;
+	}
+	public void getPassword(String Password){
+		this.Password = Password;
+	}
+	public String setPassword(String Password){
+		return Password;
+	}
+	public void getAccount(String AccountType){
+		this.AccountType = AccountType;
+	}
+	public String setAccount(String AccountType){
+		return AccountType;
+	}
+	public void toString(String Username, String Password, String AccountType){
+		JOptionPane.showMessageDialog(null, "Account Made! " + "Username: " + Username + ", " + "Password: " + Password + ", " + "Acc Type: " + AccountType + ".");
+	}
+}
+class AccountOutput{
+
+
+	public static void main(String args[]){
+
+		ProjectFourPointOne AccOne = new ProjectFourPointOne("x", "y", "z");
+		System.out.println(AccOne.Username);
+		System.out.println(AccOne.Password);
+		System.out.println(AccOne.AccountType);
+		System.out.println("");
+
+		ProjectFourPointOne AccTwo = new ProjectFourPointOne("x", "y", "z");
+		System.out.println(AccTwo.Username);
+		System.out.println(AccTwo.Password);
+		System.out.println(AccTwo.AccountType);
+		System.out.println("");
+
+	}
+}
