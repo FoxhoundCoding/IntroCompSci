@@ -1,5 +1,6 @@
-import java.util.Scanner;
-public class FivePointThree {
+import javax.swing.JOptionPane;
+
+public class FivePointFour {
 /**
  * Constructor,Get,and Set Methods.
  */
@@ -8,8 +9,9 @@ public class FivePointThree {
 	private String make;
 	private String model;
 	private double engineSize;
+	private int count;
 
-	FivePointThree(){ 
+	FivePointFour(){ 
 		color = "empty";
 		horsepower = 0;
 		make = "empty";
@@ -17,35 +19,35 @@ public class FivePointThree {
 		engineSize = 0.0;
 	}
 
-	FivePointThree(String color){
+	FivePointFour(String color){
 		this.color = "";
 		this.horsepower = 0;
 		this.make = "";
 		this.model = "";
 		this.engineSize = 0.0;
 	}
-	FivePointThree(String color, int horsepower){
+	FivePointFour(String color, int horsepower){
 		this.color = "";
 		this.horsepower = 0;
 		this.make = "";
 		this.model = "";
 		this.engineSize = 0.0;
 	}
-	FivePointThree(String color, int horsepower, String make){
+	FivePointFour(String color, int horsepower, String make){
 		this.color = "";
 		this.horsepower = 0;
 		this.make = "";
 		this.model = "";
 		this.engineSize = 0.0;
 	}
-	FivePointThree(String color, int horsepower, String make, String model){
+	FivePointFour(String color, int horsepower, String make, String model){
 		this.color = "";
 		this.horsepower = 0;
 		this.make = "";
 		this.model = "";
 		this.engineSize = 0.0;
 	}
-	FivePointThree(String color, int horsepower, String make, String model, double engineSize){
+	FivePointFour(String color, int horsepower, String make, String model, double engineSize){
 		this.color = "";
 		this.horsepower = 0;
 		this.make = "";
@@ -83,7 +85,7 @@ public class FivePointThree {
 		return engineSize;
 	}
 	public void toString(String color, int horsepower, String make, String model, double engineSize){
-		System.out.println("Make: "+make+"\n"+"Model: "+model+"\n"+"Color: "+color+"\n"+"Engine Size: "+engineSize+"\n"+"Horsepower: "+horsepower) ;
+		JOptionPane.showMessageDialog(null, "Make: "+make+"\n"+"Model: "+model+"\n"+"Color: "+color+"\n"+"Engine Size: "+engineSize+"\n"+"Horsepower: "+horsepower) ;
 		
 	}
 }
